@@ -107,3 +107,21 @@ plt.ylabel("Fase (°) ")
 plt.title("Fase da Resposta em frequência")
 plt.grid(True)
 plt.show()
+
+# Saída y(t) do item f
+N = 50
+yN = np.zeros_like(tempo, dtype=complex)
+for k in range(-N, N+1):
+    a_k = coef_fourier(k)
+    omega_k = k * w0
+    Hk = resp_freq(np.array([omega_k]))[0]
+    yN += a_k * Hk * np.exp(1j * k * w0 * tempo)
+
+plt.figure(figsize=(8,3.2))
+plt.plot(tempo, np.real(yN), label=f'Saída y(t)')
+plt.title(f'Saída do sistema LIT com aproximação de N = {N}')
+plt.xlabel('t(s)')
+plt.ylabel('Amplitude')
+plt.grid(True)
+plt.legend()
+plt.show()
