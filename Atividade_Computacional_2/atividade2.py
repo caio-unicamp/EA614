@@ -125,3 +125,12 @@ plt.ylabel('Amplitude')
 plt.grid(True)
 plt.legend()
 plt.show()
+
+# Comparação de y(t) com x(t) do item g
+plt.figure(figsize=(8,3.2))
+plt.plot(tempo, x_t, label='Sinal Original')
+plt.plot(tempo, np.real(yN), label='Saída y(t) (filtrada)', linestyle='--')
+plt.title(f'Comparação de x(t) e y(t) com aproximação de N = {N})')
+plt.grid(True)
+plt.legend()
+plt.show()
